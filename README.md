@@ -1,4 +1,4 @@
-# 🧠 Mental Health Signal — Student Wellness Analytics
+# 🧠 Mental Health Score Prediction
 
 A machine learning web application that predicts a student's mental health score on a scale of **0–10** based on academic habits, digital behavior, lifestyle patterns, and perceived stress.
 
