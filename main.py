@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from typing import Literal
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 
 model = joblib.load('Mental_Health_Model.pkl')
 
@@ -48,10 +49,10 @@ class StudentData(BaseModel):
 class PredictionResponse(BaseModel):
     predicted_mental_health_score: float
 
+# Serve frontend
 @app.get('/')
-def greet():
-    return {'Welcome to Mental Health Score API Guys'}
-
+def serve_frontend():
+    return FileResponse('index.html')
 
 @app.post('/predict', response_model=PredictionResponse)
 def predict(data: StudentData):
