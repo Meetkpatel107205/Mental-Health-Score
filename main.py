@@ -5,7 +5,6 @@ from pydantic import BaseModel, Field
 from typing import Literal
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
 
 model = joblib.load('Mental_Health_Model.pkl')
 
@@ -89,6 +88,3 @@ def predict(data: StudentData):
     prediction = model.predict(input_row)[0] # 6.77
 
     return PredictionResponse(predicted_mental_health_score=round(float(prediction), 2))
-
-# Serve frontend static files
-app.mount("/", StaticFiles(directory=".", html=True), name="static")
